@@ -1,6 +1,7 @@
 package by.epam.insurance.derivative;
 
 import by.epam.insurance.obligation.Obligation;
+import com.sun.istack.internal.NotNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,20 +32,16 @@ public class Derivative {
     public Derivative(String name, Date finishDate, Obligation...args) {
         cost = 0;
         this.name = name;
-
         obligations = new ArrayList<>();
         addObligations(args);
-
         setFinishDate(finishDate);
     }
 
     public Derivative(String name, String finishDate, Obligation...args) {
         cost = 0;
         this.name = name;
-
         obligations = new ArrayList<>();
         addObligations(args);
-
         setFinishDate(finishDate);
     }
 
@@ -195,6 +192,7 @@ public class Derivative {
                 result.add(obligation);
             }
         }
+
         return result;
     }
 

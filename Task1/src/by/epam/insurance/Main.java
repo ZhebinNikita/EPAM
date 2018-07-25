@@ -8,13 +8,22 @@ import by.epam.insurance.obligation.basis.VoluntaryObligation;
 import by.epam.insurance.obligation.object.InsuranceObject;
 import by.epam.insurance.obligation.object.MaterialObligation;
 import by.epam.insurance.obligation.object.PersonalObligation;
+import org.apache.logging.log4j.*;
 
 import java.util.List;
 
 public class Main {
 
+    private final static Logger LOG = LogManager.getRootLogger();
+
     public static void main(String[] args) {
 
+        LOG.trace("TEST MESSAGE trace");
+        LOG.debug("TEST MESSAGE debug");
+        LOG.info("TEST MESSAGE info");
+        LOG.warn("TEST MESSAGE warn");
+        LOG.error("TEST MESSAGE error");
+        LOG.fatal("TEST MESSAGE fatal");
 
         Obligation personalObligation = new PersonalObligation(
                 "PERSONAL", 50, 40.55d, new InsuranceObject("Жизнь"));
