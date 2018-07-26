@@ -2,12 +2,15 @@ package by.epam.insurance.obligation.basis;
 
 
 import by.epam.insurance.obligation.Obligation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * По признаку обязательности - обязательное.
  * */
 public class ObligatoryObligation extends Obligation implements SignableContract{
 
+    private final static Logger LOG = LogManager.getRootLogger();
     private Contract contract;
 
 
@@ -34,8 +37,12 @@ public class ObligatoryObligation extends Obligation implements SignableContract
 
     @Override
     public void showObligationData() {
-        System.out.println("\nObligatory Obligation: \nname: " + this.name + "; \nrisk level: " + this.riskLevel
-                + "%; \ncost: " + this.cost + "$; \ninsurance premium: " + this.contract.getInsurancePremium() + "$.\n");
+        try {
+            System.out.println("\nObligatory Obligation: \nname: " + this.name + "; \nrisk level: " + this.riskLevel
+                    + "%; \ncost: " + this.cost + "$; \ninsurance premium: " + this.contract.getInsurancePremium() + "$.\n");
+        } catch (Exception e) {
+            LOG.error("Some Obligation Data are missing! ", e);
+        }
     }
 
 

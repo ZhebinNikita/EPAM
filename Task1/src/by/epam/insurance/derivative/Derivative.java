@@ -2,6 +2,8 @@ package by.epam.insurance.derivative;
 
 import by.epam.insurance.obligation.Obligation;
 import com.sun.istack.internal.NotNull;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,6 +18,7 @@ import java.util.*;
  * */
 public class Derivative {
 
+    private final static Logger LOG = LogManager.getRootLogger();
     private String name;
     private double cost; // цена, которую обязан внести страхователь при заключении договорва (дериватива)
     private List<Obligation> obligations;
@@ -67,11 +70,17 @@ public class Derivative {
                 obligations.remove(i);
                 break;
             }
+            else if(i == obligations.size()-1){
+                LOG.info("There is no Obligation - \"" + obligationName + "\" to remove it");
+            }
         }
     }
 
     public void removeObligation(Obligation obligation){
-        obligations.remove(obligation);
+        boolean removed = obligations.remove(obligation);
+        if(!removed){
+            LOG.info("There is no Obligation - \"" + obligation.getName() + "\" to remove it");
+        }
     }
 
 
@@ -90,7 +99,7 @@ public class Derivative {
             finishDate = new SimpleDateFormat("dd.MM.yyyy").parse(date);
             checkDateValidity(finishDate);
         } catch (ParseException e){
-            e.printStackTrace();
+            LOG.error("Parse Exception: ", e);
         }
     }
 
@@ -160,6 +169,9 @@ public class Derivative {
                 result.add(obligation);
             }
         }
+        if(result.isEmpty()){
+            LOG.info("searchByName returned empty list.");
+        }
         return result;
     }
 
@@ -170,6 +182,9 @@ public class Derivative {
                 result.add(obligation);
             }
         }
+        if(result.isEmpty()){
+            LOG.info("searchByRisk returned empty list.");
+        }
         return result;
     }
 
@@ -179,6 +194,9 @@ public class Derivative {
             if(obligation.getCost() > minCost && obligation.getCost() < maxCost){
                 result.add(obligation);
             }
+        }
+        if(result.isEmpty()){
+            LOG.info("searchByCost returned empty list.");
         }
         return result;
     }
@@ -192,15 +210,16 @@ public class Derivative {
                 result.add(obligation);
             }
         }
-
+        if(result.isEmpty()){
+            LOG.info("search returned empty list.");
+        }
         return result;
     }
 
 
     private void checkDateValidity(Date date){
         if(date.compareTo(new Date()) <= 0){
-            System.out.println("Exception! Wrong Derivative Date!");
-            throw new DateTimeException(new SimpleDateFormat("dd.MM.yyyy").format(date));
+            LOG.error("Wrong Derivative Date!");
         }
     }
 

@@ -1,1 +1,19 @@
 
+13:21:23.708 [main] [DEBUG] (Main.java:22) - TEST MESSAGE debug
+13:21:23.709 [main] [ERROR] (Main.java:25) - TEST MESSAGE error
+13:51:43.955 [main] [DEBUG] (Main.java:22) - TEST MESSAGE debug
+13:51:43.958 [main] [ERROR] (Main.java:25) - TEST MESSAGE error
+13:51:44.005 [main] [ERROR] (PersonalObligation.java:43) - Some Obligation Data are missing! 
+java.lang.NullPointerException: null
+	at by.epam.insurance.obligation.object.PersonalObligation.showObligationData(PersonalObligation.java:41) [IdeaProjects/:?]
+	at by.epam.insurance.derivative.Derivative.showObligationsData(Derivative.java:152) [IdeaProjects/:?]
+	at by.epam.insurance.Main.main(Main.java:44) [IdeaProjects/:?]
+13:51:44.023 [main] [ERROR] (MaterialObligation.java:43) - Some Obligation Data are missing! 
+java.lang.NullPointerException: null
+	at by.epam.insurance.obligation.object.MaterialObligation.showObligationData(MaterialObligation.java:41) [IdeaProjects/:?]
+	at by.epam.insurance.derivative.Derivative.showObligationsData(Derivative.java:152) [IdeaProjects/:?]
+	at by.epam.insurance.Main.main(Main.java:44) [IdeaProjects/:?]
+13:51:44.025 [main] [ERROR] (MaterialObligation.java:43) - Some Obligation Data are missing! 
+java.lang.NullPointerException: null
+	at by.epam.insurance.obligation.object.MaterialObligation.showObligationData(MaterialObligation.java:41) [IdeaProjects/:?]
+	at by.epam.insurance.Main.main(Main.java:52) [IdeaProjects/:?]

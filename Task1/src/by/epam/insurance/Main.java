@@ -26,9 +26,9 @@ public class Main {
         LOG.fatal("TEST MESSAGE fatal");
 
         Obligation personalObligation = new PersonalObligation(
-                "PERSONAL", 50, 40.55d, new InsuranceObject("Жизнь"));
+                "PERSONAL", 50, 40.55d, null);
         Obligation materialObligation = new MaterialObligation(
-                "MATERIAL", 40, 50.00d, new InsuranceObject("Автомобиль"));
+                "MATERIAL", 40, 50.00d, null);
         Obligation voluntaryObligation = new VoluntaryObligation(
                 "VOLUNTARY", 60, 30.00d, new Contract(10.00d));
         Obligation obligatoryObligation = new ObligatoryObligation(
